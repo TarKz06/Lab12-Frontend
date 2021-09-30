@@ -62,9 +62,13 @@ export default {
   },
   methods: {
     handleLogin(user) {
-      AuthService.login(user).then(() => {
-        ;+this.$router.go()
-      })
+      AuthService.login(user)
+        .then(() => {
+          ;+this.$router.go()
+        })
+        .catch(() => {
+          this.message = 'could not login'
+        })
     }
   }
 }
