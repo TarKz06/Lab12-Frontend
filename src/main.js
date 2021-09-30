@@ -8,7 +8,7 @@ import camelCase from 'lodash/camelCase'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { FontAwesomeIcon } from './plugins/font-awesome'
+import { FontAwesomeIcon } from './plugins/foint-awesome'
 const requireComponent = require.context(
   './components',
   false,
