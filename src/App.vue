@@ -4,7 +4,7 @@
   </div>
   <div id="nav">
     <nav class="navbar navbar-expand">
-      <ul class="navbar-nav ml-auto">
+      <ul v-if="!currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
           <router-link to="/register" class="nav-link">
             <font-awesome-icon icon="user-plus" /> Sign Up
@@ -14,6 +14,19 @@
           <router-link to="/login" class="nav-link">
             <font-awesome-icon icon="sign-in-alt" /> Login
           </router-link>
+        </li>
+      </ul>
+      <ul v-if="currentUser" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <router-link to="/profile" class="nav-link">
+            <font-awesome-icon icon="user" />
+            {{ currentUser.name }}
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" @click="logout">
+            <font-awesome-icon icon="sign-out-alt" /> LogOut
+          </a>
         </li>
       </ul>
     </nav>
@@ -27,8 +40,20 @@
   <router-view />
 </template>
 <script>
+import AuthService from '@/services/AuthService.js'
 export default {
-  inject: ['GStore'] // <----
+  inject: ['GStore'], // <----
+  computed: {
+    currentUser() {
+      return localStorage.getItem('user')
+    }
+  },
+  methods: {
+    logout() {
+      AuthService.logout()
+      this.$router.go()
+    }
+  }
 }
 </script>
 <style>
