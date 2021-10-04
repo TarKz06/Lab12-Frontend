@@ -96,9 +96,7 @@ export default {
   methods: {
     // eslint-disable-next-line
     handleRegister(user) {
-      this.message = ''
-      this.successful = false
-      this.loading = true
+      AuthService.register(user)
     }
   }
 }
