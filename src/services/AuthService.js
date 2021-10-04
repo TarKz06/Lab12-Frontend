@@ -39,5 +39,9 @@ export default {
     } else {
       return false
     }
+  },
+  register(user){
+    return apiClient
+      .post('/regis',user)
   }
 }
