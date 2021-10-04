@@ -42,6 +42,6 @@ export default {
   },
   register(user){
     return apiClient
-      .post('/regis',user)
+      .post('/register',user)
   }
 }
