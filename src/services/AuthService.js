@@ -40,8 +40,11 @@ export default {
       return false
     }
   },
-  register(user){
-    return apiClient
-      .post('/register',user)
+  register(user) {
+    return apiClient.post('/register', {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    })
   }
 }
